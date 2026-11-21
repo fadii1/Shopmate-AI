@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khareed AI - Smart Shopping Agent for Pakistan</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- 1. LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo-wrap">
+                    <svg class="cart-icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="sparkle-dot"></span>
+                </div>
+                <div class="brand-text">
+                    <h2>ShopMate AI</h2>
+                    <span>Smart Shopping Agent</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="overview">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>Overview</span>
+                </button>
+                <button class="nav-item" data-tab="discover">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <span>Discover</span>
+                </button>
+                <button class="nav-item" data-tab="compare">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"></path><path d="m21 3-7 7"></path><path d="M8 21H3v-5"></path><path d="m3 21 7-7"></path></svg>
+                    <span>Price Compare</span>
+                </button>
+                <button class="nav-item" data-tab="alerts">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                    <span>Price Alerts</span>
+                </button>
+                <button class="nav-item" data-tab="reviews">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Reviews & Trust</span>
+                </button>
+                <button class="nav-item" id="navCartBtn" data-tab="cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span>My Cart</span>
+                    <span class="nav-badge red" id="cartBadgeCount">0</span>
+                </button>
+                <button class="nav-item" data-tab="orders">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    <span>Orders</span>
+                </button>
+                <button class="nav-item" data-tab="budget">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <span>Budget</span>
+                </button>
+                <button class="nav-item" data-tab="wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <span>Wishlist</span>
+                </button>
+            </nav>
+
+            <!-- Bottom Pakistan Badge -->
+            <div class="sidebar-pk-badge">
+                <div class="pk-flag-icon">🇵🇰</div>
+                <div class="pk-info">
+                    <strong>Designed for Pakistan</strong>
+                    <span>✓ Prices in PKR</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 2. MAIN VIEW AREA -->
+        <main class="main-content">
+            <!-- TOP BAR -->
+            <header class="top-navbar">
+                <div class="greeting-wrap">
+                    <h2>Good morning, Fahad 👋</h2>
+                </div>
+
+                <div class="global-search-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="topSearchInput" placeholder="Find anything... e.g. running shoes under Rs. 5,000">
+                    <button class="icon-camera-btn" id="uploadCameraBtn" title="Upload product image">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                    </button>
+                </div>
+
+                <div class="top-right-actions">
+                    <button class="bell-btn" id="bellNotifBtn" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span class="bell-badge">3</span>
+                    </button>
+                    <div class="user-profile-badge">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Fahad" class="avatar-img">
+                    </div>
+                </div>
+            </header>
+
+            <!-- SCROLLABLE TAB CONTAINER -->
+            <div class="tab-viewport">
+                <!-- TAB 1: OVERVIEW (DASHBOARD) -->
+                <div class="tab-pane active" id="pane-overview">
+                    <!-- HERO BANNER -->
+                    <section class="hero-banner">
+                        <div class="hero-text-content">
+                            <h1>Your shopping, made <span class="highlight-green">smarter</span></h1>
+                            <p class="hero-subtext">Compare stores, track prices, and shop with confidence.</p>
+
+                            <!-- Hero Search Bar -->
+                            <div class="hero-search-card">
+                                <div class="sparkle-hint">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#059669"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                                    <span class="prompt-chip" id="tryPromptChip" data-query="5000 se kam ke running shoes size 9">Try: "5000 se kam ke running shoes size 9"</span>
+                                </div>
+                                <div class="hero-input-row">
+                                    <input type="text" id="heroSearchInput" placeholder="Aap kya dhoond rahe hain? (Roman Urdu, Urdu, English)">
+                                    <button class="upload-img-chip" id="heroUploadBtn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                                        <span>Upload Image</span>
+                                    </button>
+                                    <button class="hero-submit-btn" id="heroSearchBtn">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-illustration">
+                            <div class="cart-illus-graphic">🛒🛍️</div>
+                        </div>
+                    </section>
+
+                    <!-- IN-PAGE MULTI-STORE SEARCH RESULTS LIST (NO REDIRECTS, SHOWS LINKS) -->
+                    <section class="in-page-search-results" id="inPageSearchResults" style="display: none;">
+                        <div class="results-header-bar">
+                            <div>
+                                <h3 id="searchResultsTitle">Search Results</h3>
+                                <span class="text-muted" id="searchResultsSubtitle">Showing options across Daraz & Amazon with PKR pricing and store links</span>
+                            </div>
+                            <button class="btn-close-results" id="closeResultsBtn">✕ Close Results</button>
+                        </div>
+                        <div class="results-products-list" id="searchResultsList">
+                            <!-- Populated with all store options + links -->
+                        </div>
+                    </section>
+
+                    <!-- 4 STAT METRIC CARDS -->
+                    <section class="stats-grid">
+                        <!-- Stat 1: Monthly Budget -->
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon-box green">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="12" x2="10" y2="12"></line></svg>
+                                </div>
+                                <div>
+                                    <span class="stat-label">Monthly Budget</span>
+                                    <h3 class="stat-value" id="statBudgetLimit">Rs. 25,000</h3>
+                                </div>
+                            </div>
+                            <div class="stat-progress-wrap">
+                                <div class="stat-bar-bg"><div class="stat-bar-fill" id="statBudgetBar" style="width: 57%;"></div></div>
+                                <div class="stat-sub-info">
+                                    <span id="statBudgetSpent">Rs. 14,250 spent</span>
+                                    <strong id="statBudgetPercent">57%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stat 2: Saved this Month -->
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon-box blue">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                                </div>
+                                <div>
+                                    <span class="stat-label">Saved this Month</span>
+                                    <h3 class="stat-value">Rs. 4,800</h3>
+                                </div>
+                            </div>
+                            <div class="stat-note-green">⚡ Across 4 multi-store deals</div>
+                        </div>
+
+                        <!-- Stat 3: Active Price Alerts -->
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon-box orange">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                </div>
+                                <div>
+                                    <span class="stat-label">Active Price Alerts</span>
+                                    <h3 class="stat-value" id="statAlertsCount">3</h3>
+                                </div>
+                            </div>
+                            <div class="stat-note-muted">Daraz, Amazon tracking</div>
+                        </div>
+
+                        <!-- Stat 4: Orders in Progress -->
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon-box purple">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </div>
+                                <div>
+                                    <span class="stat-label">Orders in Progress</span>
+                                    <h3 class="stat-value" id="statOrdersCount">2</h3>
+                                </div>
+                            </div>
+                            <div class="stat-note-muted">TCS & Leopard live tracking</div>
+                        </div>
+                    </section>
+
+                    <!-- MIDDLE SECTION: RECOMMENDED & RIGHT PANELS -->
+                    <div class="dashboard-columns">
+                        <!-- LEFT COLUMN: RECOMMENDED FOR YOU -->
+                        <div class="col-left">
+                            <div class="section-header-row">
+                                <div class="header-title-box">
+                                    <span class="star-icon">⭐</span>
+                                    <h3>Recommended for you</h3>
+                                </div>
+                                <button class="link-btn" id="viewAllRecsBtn">View all →</button>
+                            </div>
+
+                            <div class="products-showcase-grid" id="recommendationsGrid">
+                                <!-- Product Card 1 -->
+                                <div class="product-card">
+                                    <div class="card-badge green">Best Value</div>
+                                    <div class="product-img-box">
+                                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" alt="Nike Revolution 7">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="product-title">Nike Revolution 7 Running Shoes</h4>
+                                        <div class="pricing-row">
+                                            <span class="price-current">Rs. 4,999</span>
+                                            <span class="price-strike">Rs. 6,999</span>
+                                        </div>
+                                        <div class="rating-row">
+                                            <span class="star-rating">★ 4.6</span>
+                                            <span class="reviews-count">(12k reviews)</span>
+                                        </div>
+                                        <div class="store-row">
+                                            <span class="store-tag daraz">Daraz</span>
+                                        </div>
+                                        <div class="card-actions-row">
+                                            <button class="compare-link" onclick="quickCompare('daraz-shoe-01')">Compare Prices →</button>
+                                            <button class="add-cart-btn" onclick="quickAddToCart('daraz-shoe-01')">Add +</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Product Card 2 -->
+                                <div class="product-card">
+                                    <div class="card-badge purple">Top Rated</div>
+                                    <div class="product-img-box">
+                                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Sony WH-1000XM5">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="product-title">Sony WH-CH520 Wireless Headphones</h4>
+                                        <div class="pricing-row">
+                                            <span class="price-current">Rs. 7,999</span>
+                                            <span class="price-strike">Rs. 9,999</span>
+                                        </div>
+                                        <div class="rating-row">
+                                            <span class="star-rating">★ 4.7</span>
+                                            <span class="reviews-count">(8k reviews)</span>
+                                        </div>
+                                        <div class="store-row">
+                                            <span class="store-tag priceoye">PriceOye</span>
+                                        </div>
+                                        <div class="card-actions-row">
+                                            <button class="compare-link" onclick="quickCompare('daraz-audio-01')">Compare Prices →</button>
+                                            <button class="add-cart-btn" onclick="quickAddToCart('daraz-audio-01')">Add +</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Product Card 3 -->
+                                <div class="product-card">
+                                    <div class="card-badge green">Best Value</div>
+                                    <div class="product-img-box">
+                                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="boAt Wave Lite Smartwatch">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="product-title">boAt Wave Lite Smartwatch</h4>
+                                        <div class="pricing-row">
+                                            <span class="price-current">Rs. 3,499</span>
+                                            <span class="price-strike">Rs. 5,499</span>
+                                        </div>
+                                        <div class="rating-row">
+                                            <span class="star-rating">★ 4.5</span>
+                                            <span class="reviews-count">(15k reviews)</span>
+                                        </div>
+                                        <div class="store-row">
+                                            <span class="store-tag daraz">Daraz</span>
+                                        </div>
+                                        <div class="card-actions-row">
+                                            <button class="compare-link" onclick="quickCompare('daraz-phone-01')">Compare Prices →</button>
+                                            <button class="add-cart-btn" onclick="quickAddToCart('daraz-phone-01')">Add +</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT COLUMN: PRICE DROP WATCH & AI SHOPPING ASSISTANT -->
+                        <div class="col-right">
+                            <!-- PRICE DROP WATCH -->
+                            <div class="side-card price-drop-card">
+                                <div class="card-header-flex">
+                                    <div class="header-title-box">
+                                        <span class="drop-icon">📉</span>
+                                        <h4>Price drop watch</h4>
+                                    </div>
+                                    <button class="link-btn" onclick="switchTab('alerts')">View all →</button>
+                                </div>
+                                <div class="price-drop-items-list" id="priceDropWatchList">
+                                    <div class="drop-item">
+                                        <div class="drop-thumb">👟</div>
+                                        <div class="drop-details">
+                                            <strong>Adidas Running Shoes</strong>
+                                            <div class="price-compare-mini">
+                                                <span class="old-p">Rs. 8,999</span>
+                                                <span class="new-p">Rs. 6,999</span>
+                                            </div>
+                                        </div>
+                                        <span class="discount-badge green">↓ 22%</span>
+                                    </div>
+
+                                    <div class="drop-item">
+                                        <div class="drop-thumb">🎧</div>
+                                        <div class="drop-details">
+                                            <strong>OnePlus Buds 3</strong>
+                                            <div class="price-compare-mini">
+                                                <span class="old-p">Rs. 19,999</span>
+                                                <span class="new-p">Rs. 14,999</span>
+                                            </div>
+                                        </div>
+                                        <span class="discount-badge green">↓ 25%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI SHOPPING ASSISTANT WIDGET -->
+                            <div class="side-card assistant-widget-card">
+                                <div class="assistant-header">
+                                    <div class="bot-status-wrap">
+                                        <div class="bot-avatar-mini">🤖</div>
+                                        <div>
+                                            <h4>AI Shopping Assistant</h4>
+                                            <span class="online-tag">● Online</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="widget-chat-body" id="widgetChatHistory">
+                                    <div class="chat-msg assistant">
+                                        <p>Assalam-o-Alaikum! Main Khareed hoon. 🇵🇰 I found 3 options within your budget. Would you like the best value or lowest price?</p>
+                                    </div>
+                                </div>
+
+                                <div class="widget-quick-chips">
+                                    <button class="chip-choice" onclick="sendQuickMessage('Best value')">Best value</button>
+                                    <button class="chip-choice" onclick="sendQuickMessage('Lowest price')">Lowest price</button>
+                                    <button class="chip-choice" onclick="sendQuickMessage('5000 se kam ke running shoes')">Running shoes</button>
+                                </div>
+
+                                <form class="widget-input-row" id="widgetChatForm">
+                                    <input type="text" id="widgetChatInput" placeholder="Poochiye... (Roman Urdu/English)">
+                                    <button type="submit" class="widget-send-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOTTOM FEATURE HIGHLIGHTS -->
+                    <section class="bottom-features-grid">
+                        <div class="feature-strip-card" onclick="switchTab('reviews')">
+                            <div class="feature-icon green">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Seller trust checked</strong>
+                                <span>Avoid scams with verified sellers</span>
+                            </div>
+                            <span class="arrow-right">›</span>
+                        </div>
+
+                        <div class="feature-strip-card" onclick="switchTab('orders')">
+                            <div class="feature-icon blue">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Track Your Orders</strong>
+                                <span>Live tracking for all your orders (TCS, Leopard, Trax)</span>
+                            </div>
+                            <span class="arrow-right">›</span>
+                        </div>
+
+                        <div class="feature-strip-card" onclick="switchTab('cart')">
+                            <div class="feature-icon purple">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Flexible Payments</strong>
+                                <span>COD • JazzCash • Easypaisa</span>
+                            </div>
+                            <span class="arrow-right">›</span>
+                        </div>
+                    </section>
+
+                    <!-- FOOTER SECURITY DISCLAIMER -->
+                    <footer class="dashboard-footer-info">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span>Prices in PKR • Checkout happens only with your explicit approval ("Confirm karun? Haan/Nahi")</span>
+                    </footer>
+                </div>
+
+                <!-- TAB 2: DISCOVER / FULL CHAT VIEW -->
+                <div class="tab-pane" id="pane-discover">
+                    <div class="pane-inner-card full-chat-layout">
+                        <div class="pane-header">
+                            <div>
+                                <h3>Khareed AI Shopping Agent</h3>
+                                <p class="text-muted">Direct multi-store search & natural-language shopping copilot</p>
+                            </div>
+                            <div class="lang-pill">English • Roman Urdu • اردو</div>
+                        </div>
+                        <div class="full-chat-messages" id="mainChatHistory">
+                            <div class="chat-msg assistant">
+                                <p><strong>Assalam-o-Alaikum!</strong> Main Khareed hoon. Daraz aur Amazon pe kisi bhi cheez ki price pata karni ho, reviews check karne hon, ya alert lagana ho, mujhe bataiye.</p>
+                            </div>
+                        </div>
+                        <form class="full-chat-input-bar" id="mainChatForm">
+                            <input type="text" id="mainChatInput" placeholder="Maslan '5000 se kam ke running shoes size 9' ya 'Sony XM5 compare karo'">
+                            <button type="submit" class="btn-primary-green">Send</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB 3: PRICE COMPARE -->
+                <div class="tab-pane" id="pane-compare">
+                    <div class="pane-inner-card">
+                        <div class="pane-header">
+                            <div>
+                                <h3>Multi-Store Price Comparison</h3>
+                                <p class="text-muted">Compare base prices, courier delivery fees, and seller trust between Daraz & Amazon</p>
+                            </div>
+                            <button class="btn-primary-green" onclick="runCompareDemo()">Compare Shoes Demo</button>
+                        </div>
+                        <div id="compareResultsArea" class="table-responsive">
+                            <div class="empty-state-notice">Search or click 'Compare Shoes Demo' to see side-by-side analysis with Best Pick.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: PRICE ALERTS -->
+                <div class="tab-pane" id="pane-alerts">
+                    <div class="pane-inner-card">
+                        <div class="pane-header">
+                            <div>
+                                <h3>Price-Drop & Back-in-Stock Alerts</h3>
+                                <p class="text-muted">Automatic background tracking with instant notification</p>
+                            </div>
+                        </div>
+                        <div class="alerts-manager-layout">
+                            <div class="create-alert-box">
+                                <h4>Set New Price Alert</h4>
+                                <form id="createAlertForm">
+                                    <label>Product</label>
+                                    <select id="alertProductSelect">
+                                        <option value="daraz-shoe-01">Service Cheetah Running Shoes (Rs. 4,499)</option>
+                                        <option value="daraz-shoe-03">Nike Air Zoom Pegasus 40 (Rs. 29,500)</option>
+                                        <option value="daraz-audio-01">Sony WH-1000XM5 (Rs. 98,500)</option>
+                                    </select>
+                                    <label>Target Price (PKR)</label>
+                                    <input type="number" id="alertTargetPrice" placeholder="e.g. 4000" required>
+                                    <label>Contact Destination</label>
+                                    <input type="text" id="alertContact" value="console" placeholder="console, email, or phone">
+                                    <button type="submit" class="btn-primary-green">Set Alert</button>
+                                </form>
+                            </div>
+                            <div class="active-alerts-table-box">
+                                <h4>Active Trackers (<span id="activeAlertCount">0</span>)</h4>
+                                <div id="alertsTableView">
+                                    <p class="text-muted">Loading alerts...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: REVIEWS & TRUST -->
+                <div class="tab-pane" id="pane-reviews">
+                    <div class="pane-inner-card">
+                        <div class="pane-header">
+                            <div>
+                                <h3>Review Analysis & Seller Trust Score</h3>
+                                <p class="text-muted">3 Pros, 3 Cons, One-line Verdict, and Fake Review Heuristic Flags</p>
+                            </div>
+                        </div>
+                        <div class="review-analysis-layout">
+                            <div class="product-picker-col">
+                                <label>Select Product to Analyze:</label>
+                                <select id="reviewProductPicker" onchange="loadProductReviewSummary(this.value)">
+                                    <option value="daraz-shoe-01">Service Cheetah Mens Running Shoes (High Trust)</option>
+                                    <option value="daraz-shoe-04">Generic Mesh Sneakers (Fake Review Detection Demo)</option>
+                                    <option value="daraz-audio-01">Sony WH-1000XM5 Headphones</option>
+                                </select>
+                                <div id="sellerTrustScoreWidget" class="seller-score-badge-card">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                            <div class="summary-results-col" id="reviewSummaryDetails">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: ORDERS -->
+                <div class="tab-pane" id="pane-orders">
+                    <div class="pane-inner-card">
+                        <div class="pane-header">
+                            <div>
+                                <h3>Orders & Live Courier Tracking</h3>
+                                <p class="text-muted">Track status, couriers (TCS, Leopard, Trax), and estimated delivery</p>
+                            </div>
+                        </div>
+                        <div id="ordersDashboardView">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: BUDGET & WISHLIST -->
+                <div class="tab-pane" id="pane-budget">
+                    <div class="pane-inner-card">
+                        <div class="pane-header">
+                            <div>
+                                <h3>Monthly Budget & Priority Wishlist</h3>
+                                <p class="text-muted">Set monthly spend cap, receive 80% warnings, and prioritize wishlists</p>
+                            </div>
+                        </div>
+                        <div class="budget-view-grid">
+                            <div class="budget-control-card">
+                                <h4>Update Monthly Budget</h4>
+                                <form id="budgetSetForm">
+                                    <label>Monthly Limit (PKR)</label>
+                                    <input type="number" id="budgetLimitInput" value="25000">
+                                    <button type="submit" class="btn-primary-green">Save Budget</button>
+                                </form>
+                                <div id="budgetWarningBox" class="budget-warn-box"></div>
+                            </div>
+                            <div class="wishlist-col">
+                                <h4>Priority Wishlist</h4>
+                                <div id="wishlistItemsList">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 3. UNIFIED CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h3>My Shopping Cart 🛍️</h3>
+            <button class="drawer-close-btn" id="closeCartBtn">✕</button>
+        </div>
+
+        <div class="drawer-content" id="cartItemsList">
+            <!-- Populated dynamically -->
+        </div>
+
+        <div class="drawer-footer">
+            <div class="coupon-row">
+                <input type="text" id="couponInput" placeholder="Coupon (e.g. DARAZ100)">
+                <button id="applyCouponBtn">Apply</button>
+            </div>
+            <div class="cart-totals-summary" id="cartTotalsBox">
+                <!-- Subtotal, Delivery, Grand total -->
+            </div>
+            <button class="checkout-submit-btn" id="initCheckoutBtn">
+                Proceed to Checkout
+            </button>
+            <p class="safe-checkout-note">🛡️ Zero-Risk Guarantee: No charge without your confirmation</p>
+        </div>
+    </aside>
+
+    <!-- 4. CHECKOUT CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Confirm Your Order</h3>
+                <button class="modal-close-btn" onclick="closeCheckoutModal()">✕</button>
+            </div>
+            <div class="modal-body" id="checkoutModalBody">
+                <!-- Summary of items, store, delivery fee, total, address -->
+            </div>
+            <div class="modal-footer">
+                <div class="approval-question-banner">
+                    <strong>Confirm karun?</strong>
+                </div>
+                <div class="approval-buttons-row">
+                    <button class="btn-approve-haan" id="approveOrderHaanBtn">Haan (Confirm Order)</button>
+                    <button class="btn-reject-nahi" id="rejectOrderNahiBtn">Nahi (Cancel)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. IMAGE SEARCH MODAL -->
+    <div class="modal-overlay" id="imageSearchModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Visual Product Search</h3>
+                <button class="modal-close-btn" onclick="closeImageModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-dropzone">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                    <p><strong>Upload or Drop a product photo</strong></p>
+                    <span class="text-muted">Khareed AI identifies the item and compares prices across Daraz & Amazon</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary-green" onclick="simulateImageSearch()">Identify & Search Deals</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. IN-PAGE MULTI-STORE PRICE COMPARISON MODAL (STAYS IN APP, SHOWS STORE LINKS) -->
+    <div class="modal-overlay" id="compareModal">
+        <div class="modal-card" style="max-width: 780px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">⚖️</span>
+                    <div>
+                        <h3 id="compareModalTitle" style="font-size: 16px; font-weight: 700;">Multi-Store Comparison</h3>
+                        <span style="font-size: 11px; color: #64748b;">Compare prices, delivery charges & trust across stores with direct links</span>
+                    </div>
+                </div>
+                <button class="modal-close-btn" onclick="closeCompareModal()">✕</button>
+            </div>
+            <div class="modal-body" id="compareModalBody" style="padding: 20px; max-height: 70vh; overflow-y: auto;">
+                <!-- Filled dynamically with Daraz & Amazon options + store links -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
